@@ -8,7 +8,7 @@ $fname = $_REQUEST['fname'];
 $lname = $_REQUEST['lname'];
 $email = $_REQUEST['email'];
 $profileImage = $_FILES['profileImage'];
-// $extension = pathinfo($profileImage['name'])['extension'];
+$extension = pathinfo($profileImage['name'])['extension'];
 $acceptedTypes = ['jpg','png'];
 $userId = $_SESSION['auth']['id'];
 
