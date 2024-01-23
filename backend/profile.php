@@ -18,19 +18,44 @@ include_once "./backendLayouts/header.php";
                                     <div class="card-header">Card Info</div>
                                     <div class="card-body">
 
-                                        <div class="row">
-                                            <div class="col-lg-6">
+                                        <form action="../controller/profileUpdate.php" method="POST" enctype="multipart/form-data">
 
-                                                <img src="https://api.dicebear.com/7.x/adventurer/svg?seed=<?= ucwords($_SESSION['auth']['fname'] )?? '' ?>" alt="">
+                                            <div class="row">
+                                                <div class="col-lg-6">
+                                                    <label class="d-block" for="profileInput">
+                                                        <img style="max-width: 100%;" class="profileImage" src="https://api.dicebear.com/7.x/adventurer/svg?seed=<?= ucwords($_SESSION['auth']['fname'] )?? '' ?>" alt="">
+                                                    </label>
+                                                    <input name="profileImage" class="d-none" type="file" id="profileInput">
+                                                    
+                                                    <span class="text-danger">
+                                                    <?= $_SESSION['errors']['profileImage'] ?? ''?>
+                                                    </span>
 
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <input name="fname" value="<?= $_SESSION['auth']['fname']?>" placeholder="First Name" type="text" class="from-control my-2">
+                                                    
+                                                    <span class="text-danger">
+                                                    <?= $_SESSION['errors']['firstName'] ?? ''?>
+                                                    </span>
+
+                                                    <input name="lname" value="<?= $_SESSION['auth']['lname']?>" placeholder="last Name" type="text" class="from-control my-2">
+                                                    
+                                                    <span class="text-danger">
+                                                    <?= $_SESSION['errors']['lastName'] ?? ''?>
+                                                    </span>
+
+                                                    <input name="email" value="<?= $_SESSION['auth']['email']?>" placeholder="Email" type="text" class="from-control my-2"> <br>
+                                                   
+                                                    <span class="text-danger">
+                                                    <?= $_SESSION['errors']['email'] ?? ''?>
+                                                    </span>
+
+                                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                                </div>
                                             </div>
-                                            <div class="col-lg-6">
-                                                <input placeholder="First Name" type="text" class="from-control my-2">
-                                                <input placeholder="last Name" type="text" class="from-control my-2">
-                                                <input placeholder="Email" type="text" class="from-control my-2"> <br>
-                                                <button class="btn btn-primary">Submit</button>
-                                            </div>
-                                        </div>
+
+                                        </form>
 
                                     </div>
                                 </div>
@@ -64,4 +89,16 @@ include_once "./backendLayouts/header.php";
 
 <?php
 include_once "./backendLayouts/footer.php";
+
+unset($_SESSION['errors']);
 ?>
+<script>
+    let profileInput = document.querySelector("#profileInput")
+    let profileImage = document.querySelector(".profileImage")
+    function updtePreviewImage (event){
+       let url = URL.createObjectURL(event.target.files[0])
+       profileImage.src = url;
+    }
+
+    profileInput.addEventListener('change',updtePreviewImage,)
+</script>
