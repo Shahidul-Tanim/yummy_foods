@@ -15,7 +15,7 @@ include_once "./backendLayouts/header.php";
                             <div class="col-lg-7">
 
                                 <div class="card">
-                                    <div class="card-header">Card Info</div>
+                                    <div class="card-header">Profile Info</div>
                                     <div class="card-body">
 
                                         <form action="../controller/profileUpdate.php" method="POST" enctype="multipart/form-data">
@@ -23,7 +23,7 @@ include_once "./backendLayouts/header.php";
                                             <div class="row">
                                                 <div class="col-lg-6">
                                                     <label class="d-block" for="profileInput">
-                                                        <img style="max-width: 100%;" class="profileImage" src="https://api.dicebear.com/7.x/adventurer/svg?seed=<?= ucwords($_SESSION['auth']['fname'] )?? '' ?>" alt="">
+                                                        <img style="max-width: 100%;" class="profileImage" src="<?= getProfileImage() ?>" alt="">
                                                     </label>
                                                     <input name="profileImage" class="d-none" type="file" id="profileInput">
                                                     
@@ -33,13 +33,13 @@ include_once "./backendLayouts/header.php";
 
                                                 </div>
                                                 <div class="col-lg-6">
-                                                    <input name="fname" value="<?= $_SESSION['auth']['fname']?>" placeholder="First Name" type="text" class="from-control my-2">
+                                                    <input name="fname" value="<?= $_SESSION['auth']['fname']?>" placeholder="First Name" type="text" class="from-control my-2"> <br>
                                                     
                                                     <span class="text-danger">
                                                     <?= $_SESSION['errors']['firstName'] ?? ''?>
                                                     </span>
 
-                                                    <input name="lname" value="<?= $_SESSION['auth']['lname']?>" placeholder="last Name" type="text" class="from-control my-2">
+                                                    <input name="lname" value="<?= $_SESSION['auth']['lname']?>" placeholder="last Name" type="text" class="from-control my-2"> <br>
                                                     
                                                     <span class="text-danger">
                                                     <?= $_SESSION['errors']['lastName'] ?? ''?>
@@ -51,7 +51,7 @@ include_once "./backendLayouts/header.php";
                                                     <?= $_SESSION['errors']['email'] ?? ''?>
                                                     </span>
 
-                                                    <button type="submit" class="btn btn-primary">Submit</button>
+                                                    <button type="submit" class="btn btn-info">Submit</button>
                                                 </div>
                                             </div>
 
@@ -67,12 +67,22 @@ include_once "./backendLayouts/header.php";
                                     <div class="card-header">Password Update</div>
                                     <div class="card-body">
 
-                                        <form action="">
+                                        <form action="../controller/passwordUpdate.php" method="POST">
 
-                                            <input placeholder="Old Password" type="text" class="form-control my-2">
-                                            <input placeholder="New Password" type="text" class="form-control my-2">
-                                            <input placeholder="Confirm Password" type="text" class="form-control my-2">
-                                            <button class="btn btn-warning">Update Password</button>
+                                            <input name="oldPsk" placeholder="Old Password" type="text" class="form-control my-2">
+
+                                            <span class="text-danger"><?= $_SESSION['errors']['oldPsk'] ?? ''?></span>
+
+                                            <input name="psk" placeholder="New Password" type="text" class="form-control my-2">
+
+                                            <span class="text-danger"><?= $_SESSION['errors']['psk'] ?? ''?></span>
+
+
+                                            <input name="confirmPsk" placeholder="Confirm Password" type="text" class="form-control my-2">
+
+                                            <span class="text-danger"><?= $_SESSION['errors']['confirmPsk'] ?? ''?></span>
+
+                                            <button type="submit" class="btn btn-primary">Update Password</button>
                                         </form>
 
                                     </div>
