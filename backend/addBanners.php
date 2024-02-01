@@ -13,7 +13,7 @@ include_once "./backendLayouts/header.php";
                    <div class="card-header">Banner Info</div>
                    <div class="card-body">
 
-                       <form action="../controller/profileUpdate.php" method="POST" enctype="multipart/form-data">
+                       <form action="../controller/banners/bannerStore.php" method="POST" enctype="multipart/form-data">
 
                            <div class="row">
                                <div class="col-lg-6">
@@ -33,8 +33,7 @@ include_once "./backendLayouts/header.php";
                                   <input type="text" class="form-control my-3" name="btn_title" placeholder="Enter Banner Button Title">
                                   <input type="text" class="form-control my-3" name="btn_link" placeholder="Enter Banner Button Link">
                                   <input type="text" class="form-control my-3" name="video_url" placeholder="Enter Banner Video URL">
-                                  <input type="text" class="form-control my-3" name="btn_title" placeholder="Enter Banner Button Title">
-                                  <button type="submit" class="btn btn-info">Submit</button>
+                                  <button name="btn" type="submit" class="btn btn-info">Submit</button>
                                </div>
                            </div>
 
