@@ -41,6 +41,13 @@
     </div>
 </li>
 
+<!-- CATEGORY -->
+<li class="nav-item">
+    <a class="nav-link" href="./categories.php">
+    <i class="fa-solid fa-utensils"></i>
+        <span>Manage Category</span></a>
+</li>
+<!-- CATEGORY ENDS -->
 
 </ul>
 <!-- End of Sidebar -->
